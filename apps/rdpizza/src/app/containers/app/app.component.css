@@ -1,0 +1,58 @@
+.main-container .header {
+  background-color: white;
+  flex: 0 0 8rem;
+  border: 0.5rem solid #1a9b47;
+}
+
+.header .branding .title {
+  color: black;
+  font-size: 1rem;
+  font-weight: bolder;
+  padding-top: 8rem;
+  margin-left: 0.5rem;
+}
+
+.header .header-nav .nav-link {
+  padding-top: 5rem;
+  margin-left: 0.5rem;
+}
+
+.header .header-nav .nav-link .nav-text {
+  color: black;
+  font-size: 0.75rem;
+}
+
+.header a {
+  color: black;
+}
+
+.nav-link img {
+  max-width: 4.5rem;
+  margin-top: 4.5rem;
+}
+
+.user-icon {
+  color: black;
+}
+
+.main-container .subnav {
+  flex: 0 0 2.5rem;
+}
+
+.main-container .subnav .nav {
+  box-shadow: none;
+}
+
+.main-container .subnav .nav-link {
+  font-size: 0.75rem;
+}
+
+.nav .nav-link.active,
+.nav .nav-link:hover {
+  box-shadow: 0 -3px 0 #1a9b47 inset;
+  transition: box-shadow 0.2s ease-in;
+}
+
+.content-container .content-area {
+  background-color: white;
+}

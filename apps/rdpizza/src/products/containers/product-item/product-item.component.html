@@ -1,0 +1,34 @@
+<div class="product-item">
+  <rd-pizza-pizza-form
+    [pizza]="pizza"
+    [toppings]="toppings"
+    (selected)="onSelect($event)"
+    (create)="onCreate($event)"
+    (update)="onUpdate($event)"
+    (remove)="onRemove($event)"
+  >
+    <rd-pizza-pizza-display [pizza]="visualise"> </rd-pizza-pizza-display>
+  </rd-pizza-pizza-form>
+</div>
+<clr-modal [(clrModalOpen)]="deleteConfirm">
+  <h3 class="modal-title">Remove Pizza</h3>
+  <div class="modal-body">
+    <p>Are you sure you want to remove this delicious pizza?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline"
+      (click)="deleteConfirm = false"
+    >
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="onRemoveConfirmed(pizza)"
+    >
+      Yes
+    </button>
+  </div>
+</clr-modal>

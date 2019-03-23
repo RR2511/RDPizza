@@ -1,0 +1,23 @@
+:host {
+    display: block;
+}
+
+.pizza-display {
+    border-radius: 4px;
+    padding: 15px 0;
+}
+
+.pizza-display .pizza-display-base {
+    position: relative;
+    text-align: center; 
+}
+
+.pizza-display .pizza-display-topping {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+}

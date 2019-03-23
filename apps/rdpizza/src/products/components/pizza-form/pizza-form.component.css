@@ -1,0 +1,38 @@
+.pizza-form label {
+  font-size: 0.75rem;
+  font-weight: bolder;
+  max-height: 1.5rem;
+}
+
+.pizza-form-input {
+  font-size: 0.75rem;
+}
+
+.pizza-form-container {
+  background-color: white;
+  margin-bottom: 2rem;
+  max-height: fit-content;
+}
+
+.clr-row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.pizza-form-container:last-of-type {
+  margin-top: 2rem;
+}
+
+.pizza-form-actions .btn {
+  float: right;
+  size: 1rem;
+}
+
+.pizza-form-actions .btn-primary {
+  background-color: #1a9b47;
+  border-color: #1a9b47;
+}
+
+.pizza-form-actions .btn-primary:hover {
+  background-color: #136f33;
+}

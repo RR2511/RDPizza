@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+.products {
+  position: relative;
+}
+
+.products .products-new {
+  margin: -35px -35px 35px;
+  padding: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.products .products-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.products .products-list rd-pizza-pizza-item {
+  background: #fff;
+  margin: 0 1rem 2rem;
+  transition: 0.2s all ease;
+}
+
+.products .products-list rd-pizza-pizza-item:hover {
+  transform: scale(1.05);
+}
+
+.btn {
+  color: #1a9b47;
+  border-color: #1a9b47;
+}

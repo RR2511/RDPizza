@@ -1,0 +1,4 @@
+.card.clickable:hover {
+    box-shadow: 0 0.125rem 0 0 #1A9B47;
+    border: 1px solid #1A9B47;
+}

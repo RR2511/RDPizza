@@ -2,7 +2,213 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "",
-  "projects": {},
+  "projects": {
+    "data": {
+      "root": "libs/data",
+      "sourceRoot": "libs/data/src",
+      "projectType": "library",
+      "prefix": "RD-Pizza-Nx",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/data/tsconfig.lib.json",
+              "libs/data/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/data/src/test.ts",
+            "tsConfig": "libs/data/tsconfig.spec.json",
+            "karmaConfig": "libs/data/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "rdpizza": {
+      "root": "apps/rdpizza/",
+      "sourceRoot": "apps/rdpizza/src",
+      "projectType": "application",
+      "prefix": "rd-pizza",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/rdpizza",
+            "index": "apps/rdpizza/src/index.html",
+            "main": "apps/rdpizza/src/main.ts",
+            "polyfills": "apps/rdpizza/src/polyfills.ts",
+            "tsConfig": "apps/rdpizza/tsconfig.app.json",
+            "assets": [
+              "apps/rdpizza/src/favicon.ico",
+              "apps/rdpizza/src/assets"
+            ],
+            "styles": [
+              "node_modules/@clr/icons/clr-icons.min.css",
+              "node_modules/@clr/ui/clr-ui.min.css",
+              "apps/rdpizza/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/rdpizza/src/environments/environment.ts",
+                  "with": "apps/rdpizza/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "rdpizza:build",
+            "proxyConfig": "apps/rdpizza//proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "rdpizza:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rdpizza:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/rdpizza/tsconfig.app.json",
+              "apps/rdpizza/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/rdpizza/src/test.ts",
+            "tsConfig": "apps/rdpizza/tsconfig.spec.json",
+            "karmaConfig": "apps/rdpizza/karma.conf.js",
+            "polyfills": "apps/rdpizza/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
+        }
+      }
+    },
+    "rdpizza-e2e": {
+      "root": "apps/rdpizza-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/rdpizza-e2e/cypress.json",
+            "tsConfig": "apps/rdpizza-e2e/tsconfig.e2e.json",
+            "devServerTarget": "rdpizza:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rdpizza:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/rdpizza-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "rdpizza-backend": {
+      "root": "apps/rdpizza-backend",
+      "sourceRoot": "apps/rdpizza-backend/src",
+      "projectType": "application",
+      "prefix": "rdpizza-backend",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/builders:node-build",
+          "options": {
+            "outputPath": "dist/apps/rdpizza-backend",
+            "main": "apps/rdpizza-backend/src/main.ts",
+            "tsConfig": "apps/rdpizza-backend/tsconfig.app.json",
+            "assets": ["apps/rdpizza-backend/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/rdpizza-backend/src/environments/environment.ts",
+                  "with": "apps/rdpizza-backend/src/environments/environment.prod.ts"
+                }
+              ],
+              "externalDependencies": "none"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/builders:node-execute",
+          "options": {
+            "buildTarget": "rdpizza-backend:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/rdpizza-backend/tsconfig.app.json",
+              "apps/rdpizza-backend/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/rdpizza-backend/jest.config.js",
+            "tsConfig": "apps/rdpizza-backend/tsconfig.spec.json"
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "warnings": {
       "typescriptMismatch": false,
@@ -10,5 +216,6 @@
     },
     "defaultCollection": "@nrwl/schematics"
   },
-  "schematics": {}
+  "schematics": {},
+  "defaultProject": "data"
 }

@@ -1,0 +1,6 @@
+<a [routerLink]="['/products', pizza.id]" class=" card clickable">
+  <div class="card-header">{{ pizza.name }}</div>
+  <div class="card-block">
+    <rd-pizza-pizza-display [pizza]="pizza"></rd-pizza-pizza-display>
+  </div>
+</a>

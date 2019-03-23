@@ -7,5 +7,18 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "data": {
+      "tags": []
+    },
+    "rdpizza": {
+      "tags": []
+    },
+    "rdpizza-e2e": {
+      "tags": []
+    },
+    "rdpizza-backend": {
+      "tags": []
+    }
+  }
 }
