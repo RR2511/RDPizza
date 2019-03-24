@@ -4,6 +4,10 @@
   border: 0.5rem solid #1a9b47;
 }
 
+.header .branding {
+  max-width: 100%;
+}
+
 .header .branding .title {
   color: black;
   font-size: 1rem;
@@ -55,4 +59,19 @@
 
 .content-container .content-area {
   background-color: white;
+}
+
+@media (max-width: 765px) {
+  .main-container .header {
+    flex: 0 0 4rem;
+  }
+
+  .header .branding .title {
+    font-size: 0.75rem;
+    padding-top: 1.5rem;
+  }
+  .nav-link img {
+    max-width: 2rem;
+    margin-top: 0.5rem;
+  }
 }
