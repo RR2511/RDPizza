@@ -3,8 +3,13 @@
     <a class="btn btn-ok" routerLink="./new"> New Pizza </a>
   </div>
   <div class="products-list">
-    <div *ngIf="!pizzas?.length">No pizzas, add one to get started.</div>
-    <rd-pizza-pizza-item *ngFor="let pizza of pizzas" [pizza]="pizza">
+    <div *ngIf="!(pizzas$ | async)?.length">
+      No pizzas, add one to get started.
+    </div>
+    <rd-pizza-pizza-item
+      *ngFor="let pizza of (pizzas$ | async)"
+      [pizza]="pizza"
+    >
     </rd-pizza-pizza-item>
   </div>
 </div>

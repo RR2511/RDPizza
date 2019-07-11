@@ -8,6 +8,8 @@ import * as fromComponents from './components';
 import * as fromContainers from './containers';
 import * as fromServices from './services';
 import { ClarityModule } from '@clr/angular';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store';
 
 export const ROUTES: Routes = [
   { path: '', component: fromContainers.ProductsComponent },
@@ -21,7 +23,8 @@ export const ROUTES: Routes = [
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forChild(ROUTES)
+    RouterModule.forChild(ROUTES),
+    StoreModule.forFeature('products', reducers)
   ],
   providers: [...fromServices.services],
   declarations: [...fromContainers.containers, ...fromComponents.components],
